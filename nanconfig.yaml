@@ -1,0 +1,56 @@
+NAME: 'NANA'
+IS_TRAIN: true
+
+DATASET:
+    TRAINDIR_LEFT:  '/home/zhengmana/Downloads/SceneFlow/frames_cleanpass/15mm_focallength/scene_forwards/slow/train/left/'
+    TRAINDIR_RIGHT: '/home/zhengmana/Downloads/SceneFlow/frames_cleanpass/15mm_focallength/scene_forwards/slow/train/right/'
+#    VALDIR_LEFT: '/media/zhengmana/mn/unite/val/left/'
+#    VALDIR_RIGHT: '/media/zhengmana/mn/unite/val/right/'
+#    VALDIR_LEFT: '/media/zhengmana/NA/August/left/'
+#    VALDIR_RIGHT: '/media/zhengmana/NA/August/right/'
+    VALDIR_LEFT: '/home/zhengmana/Downloads/SceneFlow/frames_cleanpass/15mm_focallength/scene_forwards/fast/left/'
+    VALDIR_RIGHT: '/home/zhengmana/Downloads/SceneFlow/frames_cleanpass/15mm_focallength/scene_forwards/fast/right/'
+
+
+    INPUT_RES: 256
+    LOCAL_RES: 128
+    HOLE_MIN: 32
+    HOLE_MAX: 127
+    MEAN_LEFT: [0.3570,0.3742,0.3641]
+    MEAN_RIGHT: [0.3599,0.3781,0.3696]
+VAL:
+    INIT_G: '/home/zhengmana/Desktop/unite/unite/snapshot/202003_1585147823/G_160.pkl'
+ #   INIT_G: '/home/zhengmana/Desktop/unite/unite/snapshot/0428_1556440119/G_50.pkl'
+ #   INIT_G: '/home/zhengmana/Desktop/stereo image inpainting0130/snapshot/1202_1543758792/G_265.pkl'
+#   INIT_G: '/home/zhengmana/Desktop/nana/unite/snapshot/0405_1554369208/G_160.pkl'
+#   INIT_G: '/home/zhengmana/Desktop/stereo image inpainting0130/snapshot/0117_1547722649/G_160.pkl'
+#    INIT_G: '/home/zhengmana/Desktop/nana/unite/snapshot/0407_1554644605/G_130.pkl'
+
+TRAIN_G_EPOCHES: -1
+TRAIN_D_EPOCHES: -1
+TOTAL_EPOCHES: 300
+
+INIT_G:  '/home/zhengmana/Desktop/unite/unite/snapshot/0428_1556440119/G_50.pkl' # '/home/zhengmana/Desktop/completionnet_places2.t7'
+INIT_D: '/home/zhengmana/Desktop/unite/unite/snapshot/0428_1556440119/D_50.pkl'
+INIT_D_RIGHT: '/home/zhengmana/Desktop/unite/unite/snapshot/0428_1556440119/D_RIGHT_50.pkl'
+
+SOLVER:
+  WORKERS: 1
+  IMG_PER_GPU: 2
+  GPU_IDS: [0] # real BHSIZE is : IMG_PER_GPU * len(GPU_IDS)
+  LR_SCHEDULE: 'standard'
+  OPTIMIZER: 'ADAM' # ADAM | SGD
+  MOMENTUM: 0.5
+  WEIGHTDECAY: 0.00
+
+LOGS:
+  PRINT_FREQ: 300
+  SNAPSHOT_FREQ: 10
+  SNAPSHOT_MAXFILES: NOTIMPLEMENT
+  SNAPSHOT_DIR: 'snapshot'
+  LOG_FREQ: 300
+  LOG_DIR: 'logs'
+  LOG_DIR_TEST: 'logstest'
+  LOG_SHUTIL_ON: true
+  LOG_SHUTIL_IGNORELIST: ['*.zip','*.mp4','*.jpg','*.png','*.pyc','*.so','*.pkl','*.caffemodel', '__pycache__','snapshot','logs']
+  LOG_SHUTIL_IGNOREFILE: '.gitignore'
