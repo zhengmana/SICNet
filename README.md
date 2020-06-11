@@ -4,7 +4,7 @@
 
 &ensp;&ensp;The architecture of the proposed method for stereo image completion is shown in Fig.1. The main body, i.e. the part within the dashed box in the figure, is a fully convolutional network responsible for stereo image completion, called SICNet for short. Besides, we have several auxiliary branches used to train the network together with directly defined losses.
 
-![Network architecture. You may need VPN if you see the words.](network.png "Network architecture")
+![Network architecture. You may need VPN if you see the words.](https://xieshuai-saved.oss-cn-beijing.aliyuncs.com/zhengmana/SICNet_architecture.png "Network architecture")
 
 &ensp;&ensp;SICNet is designed to be an X-shaped encoder-fusion-decoder structure.It has two branches of encoders and decoders. The two branches have intersection in the middle to exchange cues. Given a pair of stereo images and their binary masks indicating regions to be repaired, SICNet treats each view as a four-channel (RGB and the binary mask) map and feeds the two views separately into the two branches of encoders. Each view is encoded to be lower-resolution featuremaps which could well express spatial context and lower subsequent computational complexity. The two views of feature maps are then sent to the fusion module for stereo-interactive repairing. Next, the generated feature maps are used to produce the completed two views, each being a three-channel RGB image, by two branches of decoders, separately.
 
